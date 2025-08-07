@@ -5,3 +5,10 @@ As part of scripting and adding custom features to my striiped windows 10, Worki
 Moving to and fro in tabs and programs was tideous so I decided to crete a solution resulting to this. 
 
 As a result, some of the details (such as IP address, Port numbers, directories) are static which can be modified as suited.
+
+Offers features 
+1. query from obsidian directly
+2. export files from client to obsidian
+3. Write directly into obsidian
+
+NB: after ecport or write, use <X-obsidian.py reload > to refresh the database
