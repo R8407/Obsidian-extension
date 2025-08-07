@@ -10,9 +10,9 @@ notes = {}
 
 def load_notes():
     notes.clear()
-    for md_file in notes_base_dir.rglob("*.md"):
+    for md_file in notes_base_dir.rglob("*.md"): #searches for .md files
         with open(md_file, encoding="utf-8", errors="ignore") as f:
-            notes[str(md_file)] = f.read()
+            notes[str(md_file)] = f.read() # key: file path as string, value: file content
 
 load_notes()
 
@@ -44,5 +44,6 @@ async def upload_file(file: UploadFile = File(...)):
 
     with open(export_path, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
+
 
     return {"filename": str(export_path)}
