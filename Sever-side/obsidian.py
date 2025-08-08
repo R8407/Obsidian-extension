@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 app = FastAPI()
-notes_base_dir = Path("E:/ObsadianNotes")
+notes_base_dir = Path("E:/ObsadianNotes") #replace with your obsidian file path
 notes = {}
 
 def load_notes():
@@ -47,3 +47,4 @@ async def upload_file(file: UploadFile = File(...)):
 
 
     return {"filename": str(export_path)}
+
