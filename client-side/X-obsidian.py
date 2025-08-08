@@ -69,7 +69,7 @@ def highlight(text, query):
 
 def main_query():
     arg = sys.argv[2]
-    url = "http://192.168.81.1:5000/query"
+    url = "http://192.168.81.1:5000/query" #change the ip to the ip of the server exposed to the network
     params = {"q": arg}  
 
     response = requests.get(url, params=params) 
@@ -87,7 +87,7 @@ def main_query():
 
 
 def reload():
-    url = "http://192.168.81.1:5000/reload"
+    url = "http://192.168.81.1:5000/reload" #change the ip to the ip of the server exposed to the network
     response = requests.get(url)
     print(response.content)
     print(response.status_code)
@@ -96,7 +96,7 @@ def reload():
 def export():
     arg = sys.argv[2]
     file_name = arg
-    url = "http://192.168.81.1:5000/export"
+    url = "http://192.168.81.1:5000/export" #change the ip to the ip of the server exposed to the network
     with open(file_name, "r", encoding="utf_8") as f:
         files = {"file": (file_name, f)}
 
@@ -107,10 +107,6 @@ def export():
             print(f"Export failed: {response.status_code} - {response.text}")
 
 
-from pathlib import Path
-import os
-import requests
-
 def write():
     file_name = input("Enter filename: ").strip()
     base_path = Path.cwd()
@@ -119,13 +115,12 @@ def write():
 
     full_file_path = write_path / f"{file_name}.md"
 
-    # Step 1: Write the file
     with open(full_file_path, "w", encoding="utf-8") as f:
         content = input("Type your notes here: ")
         f.write(content)
 
     #Upload it to the server
-    url = "http://192.168.81.1:5000/export"
+    url = "http://192.168.81.1:5000/export" #change the ip to the ip of the server exposed to the network
     with open(full_file_path, "rb") as f:
         files = {"file": (full_file_path.name, f)}
         response = requests.post(url, files=files)
